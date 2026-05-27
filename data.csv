@@ -1,0 +1,6 @@
+name,role,tokens_used,cost
+Alice,engineer,1200,0.0024
+Bob,designer,800,0.0016
+Sita,manager,2100,0.0042
+David,engineer,950,0.0019
+Priya,designer,1750,0.0035
