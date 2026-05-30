@@ -1,0 +1,48 @@
+# ======================
+# CLI Chatbot
+# .gitignore
+# ======================
+
+# ── Python ──────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+
+# ── Virtual environments ─────────────────────────────
+.venv/
+venv/
+env/
+ENV/
+
+# ── Environment variables & secrets ──────────────────
+# API keys go here in Module 03 — never commit this file
+.env
+.env.local
+*.env
+
+# ── Chat history & data ───────────────────────────────
+# Personal conversation data — keep off GitHub
+chat_history.json
+*.json
+
+# ── Log files ────────────────────────────────────────
+# Logs grow large and contain runtime details
+*.log
+chatbot.log
+logs/
+
+# ── OS files ─────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── VS Code ──────────────────────────────────────────
+.vscode/
+*.code-workspace
+
+# ── Temporary files ──────────────────────────────────
+*.tmp
+*.temp
+*.bak
