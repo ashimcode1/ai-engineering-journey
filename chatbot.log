@@ -1,0 +1,14 @@
+2026-05-29 12:26:17,282 | INFO | CLIChatbot initialized
+2026-05-29 12:26:22,601 | INFO | CLIChatbot initialized
+2026-05-30 12:34:10,150 | INFO | CLIChatbot initialized
+2026-05-30 12:34:10,151 | WARNING | No history file found — starting fresh
+2026-05-30 12:35:37,417 | INFO | Saved 0 messages to chat_history.json
+2026-05-30 12:35:37,417 | INFO | Conversation cleared
+2026-05-30 12:35:40,472 | INFO | Saved 0 messages to chat_history.json
+2026-05-30 12:35:40,473 | INFO | Bot shut down by user
+2026-05-30 12:36:12,535 | INFO | CLIChatbot initialized
+2026-05-30 12:36:12,539 | INFO | Loaded 0 messages from disk
+2026-05-30 12:36:32,032 | INFO | Saved 0 messages to chat_history.json
+2026-05-30 12:36:32,032 | INFO | Conversation cleared
+2026-05-30 12:36:33,676 | INFO | Saved 0 messages to chat_history.json
+2026-05-30 12:36:33,677 | INFO | Bot shut down by user
