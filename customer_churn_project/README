@@ -1,0 +1,38 @@
+# Customer Churn Analysis
+
+Exploratory analysis of customer churn patterns, using the Telco Customer Churn dataset (7,043 customers, 21 features covering contract type, services, tenure, and billing).
+
+> **Note:** this is an EDA and feature-engineering project, not a trained predictive model — no classifier is built here. If you're looking for the folder because of the project name, that's worth knowing upfront.
+
+## Why this project
+
+Rather than jumping straight to a model, this project focuses on understanding *what actually drives churn* first — which contract types, tenure ranges, and service bundles correlate with a customer leaving. That's the groundwork a real churn-reduction project would need before modeling makes sense.
+
+## What it does
+
+1. **Data cleaning**: fixed a `TotalCharges` column that was stored as text with blank strings (11 rows), converted to numeric and dropped the unrecoverable rows (7,043 → 7,032).
+2. **Churn distribution**: 26.6% of customers churned overall.
+3. **Contract-type analysis**: churn is heavily concentrated in month-to-month contracts — 43% of month-to-month customers churned, vs. 11% for one-year and only 2.8% for two-year contracts.
+4. **Tenure analysis**: created tenure groups (New ≤12mo, Growing ≤24mo, Mature ≤48mo, Loyal 48mo+) — churn drops sharply with tenure, from 48% in the "New" group to under 10% in "Loyal."
+5. **Feature engineering**: built a `total_services` count (how many of 7 add-on services a customer has) and a `charges_ratio` feature, both intended as inputs for a future model.
+6. **Dashboard**: a 4-panel summary chart (overall churn, churn by contract type, churn by tenure group, churn by service count) saved as `churn_dashboard.png`.
+
+## Key finding
+
+The clearest signal in the data: contract type and tenure together explain most of the churn risk. A new customer on a month-to-month plan is the highest-risk segment by a wide margin; a two-year customer with multiple services is the lowest.
+
+## What I'd do next
+
+- Train a classifier on the engineered features (`total_services`, `charges_ratio`, `tenure_group`) — the groundwork here (clean data, encoded categories, sensible features) is already done, this is the natural next step.
+- Given the contract-type finding, a churn-prevention model would likely benefit from treating "months into a month-to-month contract" as a specific risk feature, not just raw tenure.
+
+## Files
+
+- `customer_churn_project.ipynb` — full EDA and feature engineering
+- `Telco-Customer-Churn.csv` — raw source data
+- `Churn_cleaned.csv` — cleaned, feature-engineered output
+- `churn_dashboard.png` — summary visualization
+
+## Stack
+
+Python, pandas, matplotlib, seaborn
