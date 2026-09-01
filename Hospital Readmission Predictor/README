@@ -1,0 +1,39 @@
+# Diabetes Predictor
+
+> **Note:** this folder is currently named "Hospital Readmission Predictor" in the repo, but the notebook actually predicts diabetes onset, not hospital readmission — worth renaming the folder to match.
+
+Predicts whether a patient has diabetes, using the Pima Indians Diabetes dataset (768 patients, 8 clinical features: glucose, blood pressure, BMI, age, etc.).
+
+## Why this project
+
+Real clinical datasets are messy in a specific, deceptive way: missing values are often recorded as `0` instead of `NaN` (a blood pressure of 0 isn't a real measurement, it's a missing one). Catching and handling that correctly — rather than training on physiologically impossible zeros — was the main challenge here.
+
+## Approach
+
+1. **Data quality check**: found that "0" was standing in for missing data across five columns (Glucose, BloodPressure, SkinThickness, Insulin, BMI) — up to 374 missing values in the Insulin column alone.
+2. **Imputation**: replaced the disguised zeros with `NaN`, then filled using row-wise median across the affected clinical columns (rather than dropping ~half the dataset).
+3. **Feature engineering**: added a BMI category (Underweight/Normal/Overweight/Obese) and a binary glucose-risk flag (>140 mg/dL threshold).
+4. **Baseline model**: Random Forest — 76% accuracy, but recall on the diabetic class (the one that actually matters clinically) was only 0.65.
+5. **SMOTE + Random Forest (500 estimators)**: improved diabetic-class recall to 0.75, with a small tradeoff in precision (0.66) — accuracy held steady at 77%.
+
+## Results (final model)
+
+| | Precision | Recall | F1 |
+|---|---|---|---|
+| No diabetes | 0.85 | 0.79 | 0.82 |
+| Diabetes | 0.66 | 0.75 | 0.70 |
+| **Accuracy** | | | **0.77** |
+
+## What I'd do differently at scale
+
+- In a real clinical setting, missing-value handling this aggressive (row-median imputation across 5 columns) deserves more scrutiny — I'd want to check whether "missingness" itself correlates with the outcome before assuming it's safe to impute.
+- Recall on the diabetic class is still the weaker number — for a screening tool, false negatives (missing an actual diabetic patient) are usually costlier than false positives, so this is the class I'd keep optimizing.
+- Only 768 rows total — I'd want a larger or more diverse dataset before treating this as more than a learning exercise.
+
+## Files
+
+- `Hospital Readmission Predictor.ipynb` — full analysis and modeling (data source loaded directly from a public dataset URL, no local CSV needed)
+
+## Stack
+
+Python, pandas, numpy, scikit-learn, imbalanced-learn (SMOTE), joblib
